@@ -1,0 +1,25 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "API Title",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.c-wallet.io/v1"
+        }
+    ],
+    "paths":
+      {
+        "/wallets/:wallet_id": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+         
+                }         
+            }
+        }
+    } 
+}
