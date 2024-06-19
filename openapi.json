@@ -13,6 +13,7 @@
       {
         "/wallets/:wallet_id": {
             "get": {
+                "description": "get a wallet",
                 "responses": {
                     "200": {
                         "description": "OK"
