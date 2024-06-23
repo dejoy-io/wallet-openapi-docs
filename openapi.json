@@ -19,7 +19,7 @@
                     {
                         "description": "The wallet's ID or UID",
                         "in": "path",
-                        "name": "app_id",
+                        "name": "wallet_id",
                         "required": true,
                         "schema": {
                             "description": "The wallet's ID or UID",
