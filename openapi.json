@@ -334,12 +334,12 @@
                     "code-samples": [
                         {
                             "name": "JavaScript",
-                            "language": "javascript",
+                            "language": "node",
                             "code": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
                         },
                         {
                             "name": "TypeScript",
-                            "language": "javascript",
+                            "language": "node",
                             "code": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
                         },
                         {
