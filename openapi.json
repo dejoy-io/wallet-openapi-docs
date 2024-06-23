@@ -125,7 +125,7 @@
                 "tags": [
                     "Wallet"
                 ],
-                "x-codeSamples": [
+                "x-code-samples": [
                     {
                         "label": "JavaScript",
                         "lang": "JavaScript",
@@ -328,7 +328,7 @@
                 "tags": [
                     "Wallet"
                 ],
-                "x-codeSamples": [
+                "x-code-samples": [
                     {
                         "label": "JavaScript",
                         "lang": "JavaScript",
