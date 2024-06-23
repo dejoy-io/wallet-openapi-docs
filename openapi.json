@@ -394,15 +394,15 @@
                         }
                     ],
                     "samples-languages": [
-                        "Javascript",
-                        "Typescript",
+                        "javascript",
+                        "typescript",
                         "python",
                         "Python Async",
-                        "Go",
-                        "Kotlin",
-                        "Java",
-                        "Ruby",
-                        "Rust",
+                        "go",
+                        "kotlin",
+                        "java",
+                        "ruby",
+                        "rust",
                         "C#",
                         "CLI",
                         "cURL"
