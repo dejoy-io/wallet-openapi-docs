@@ -788,6 +788,378 @@
                     ]
                 }
             }
+        },
+
+        "/api/v1/addresses/{address_id}": {
+            "get": {
+                "description": "Get a address.",
+                "operationId": "v1.address.get",
+                "parameters": [
+                    {
+                        "description": "The address's ID or UID",
+                        "in": "path",
+                        "name": "address_id",
+                        "required": true,
+                        "schema": {
+                            "description": "The address's ID or UID",
+                            "example": "unique-address-identifier",
+                            "maxLength": 256,
+                            "minLength": 1,
+                            "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                            "type": "string"
+                        },
+                        "style": "simple"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AddressOut"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Not Found"
+                    },
+                    "409": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Conflict"
+                    },
+                    "422": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        },
+                        "description": "Validation Error"
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Too Many Requests"
+                    }
+                },
+                "summary": "Get Address",
+                "tags": [
+                    "Address"
+                ],
+                "x-readme": {
+                    "code-samples": [
+                        {
+                            "name": "JavaScript",
+                            "language": "node",
+                            "code": "const addressOut = await xwallet.address.get(\"address_id\");"
+                        },
+                        {
+                            "name": "TypeScript",
+                            "language": "node",
+                            "code": "const addressOut = await xwallet.address.get(\"address_id\");"
+                        },
+                        {
+                            "name": "Python",
+                            "language": "python",
+                            "code": "address_out = xwallet.address.get(\"address_id\")"
+                        },
+                        {
+                            "name": "Python (Async)",
+                            "language": "python",
+                            "code": "address_out = await xwallet.address.get(\"address_id\")"
+                        },
+                        {
+                            "name": "Go",
+                            "language": "go",
+                            "code": "addressOut, err := xwalletClient.Address.Get(ctx, \"address_id\")"
+                        },
+                        {
+                            "name": "Kotlin",
+                            "language": "kotlin",
+                            "code": "val addressOut = xwallet.address.get(\"address_id\")"
+                        },
+                        {
+                            "name": "Java",
+                            "language": "java",
+                            "code": "AddressOut addressOut = xwallet.getAddress().get(\"address_id\")"
+                        },
+                        {
+                            "name": "Ruby",
+                            "language": "ruby",
+                            "code": "address_out = xwallet.address.get(\"address_id\")"
+                        },
+                        {
+                            "name": "Rust",
+                            "language": "rust",
+                            "code": "let address_out = xwallet.address().get(\"address_id\").await?;"
+                        },
+                        {
+                            "name": "C#",
+                            "language": "csharp",
+                            "code": "var addressOut = await xwallet.Address.GetAsync(\"address_id\")"
+                        },
+                        {
+                            "name": "CLI",
+                            "language": "Shell",
+                            "code": "xwallet address get \"address_id\""
+                        },
+                        {
+                            "label": "cURL",
+                            "language": "shell",
+                            "code": "curl -X 'GET' \\\n  'https://api.xwallet.com/api/v1/addresses/{address_id}' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'"
+                        }
+                    ]
+                }      
+            }
+        },
+        "/api/v1/addresses": {
+            "post": {
+                "description": "Create a new address.",
+                "operationId": "v1.address.create",
+                "parameters": [
+                    {
+                        "description": "Get an existing address, or create a new one if doesn't exist. It's two separate functions in the libs.",
+                        "in": "query",
+                        "name": "get_if_exists",
+                        "schema": {
+                            "default": false,
+                            "description": "Get an existing address, or create a new one if doesn't exist. It's two separate functions in the libs.",
+                            "type": "boolean"
+                        },
+                        "style": "form"
+                    },
+                    {
+                        "description": "The request's idempotency key",
+                        "in": "header",
+                        "name": "idempotency-key",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "simple"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddressIn"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AddressOut"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AddressOut"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Not Found"
+                    },
+                    "409": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Conflict"
+                    },
+                    "422": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        },
+                        "description": "Validation Error"
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Too Many Requests"
+                    }
+                },
+                "summary": "Create Address",
+                "tags": [
+                    "Address"
+                ],
+                "x-readme": {
+                    "code-samples": [
+                        {
+                            "name": "JavaScript",
+                            "language": "node",
+                            "code": "const addressOut = await xwallet.address.create({\n    accountId: \"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n    chain: \"ERC20\",\n    token: \"USDT\",\n    uid: \"unique-address-identifier\"\n});"
+                        },
+                        {
+                            "name": "TypeScript",
+                            "language": "node",
+                            "code": "const addressOut = await xwallet.address.create({\n    accountId: \"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n    chain: \"ERC20\",\n    token: \"USDT\",\n    uid: \"unique-address-identifier\"\n});"
+                        },
+                        {
+                            "name": "Python",
+                            "language": "python",
+                            "code": "address_out = xwallet.address.create(AddressIn(\n    accountId=\"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n    chain=\"ERC20\",\n    token=\"USDT\",\n    uid=\"unique-address-identifier\"\n), None)"
+                        },
+                        {
+                            "name": "Python (Async)",
+                            "language": "python",
+                            "code": "address_out = await xwallet.address.create(AddressIn(\n    accountId=\"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n    chain=\"ERC20\",\n    token=\"USDT\",\n    uid=\"unique-address-identifier\"\n), None)"
+                        },
+                        {
+                            "name": "Go",
+                            "language": "go",
+                            "code": "addressOut, err := xwalletClient.Address.Create(ctx, &AddressIn{\n    AccountId: \"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n    Chain: \"ERC20\",\n    Token: \"USDT\",\n    Uid: \"unique-address-identifier\",\n})"
+                        },
+                        {
+                            "name": "Kotlin",
+                            "language": "kotlin",
+                            "code": "val addressOut = xwallet.address.create(AddressIn()\n    .walletId(\"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\")\n    .chain(\"ERC20\")\n    .token(\"USDT\")\n    .uid(\"unique-account-identifier\")\n)"
+                        },
+                        {
+                            "name": "Java",
+                            "language": "java",
+                            "code": "AddressOut addressOut = xwallet.getAddress().create(new AddressIn()\n    .accountId(\"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\")\n    .chain(\"ERC20\")\n    .token(\"USDT\")\n    .uid(\"unique-address-identifier\")\n)"
+                        },
+                        {
+                            "name": "Ruby",
+                            "language": "ruby",
+                            "code": "address_out = xwallet.address.create(XWallet::AddressIn.new({\n    \"account_id\": \"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n    \"chain\": \"ERC20\",\n    \"token\": \"USDT\",\n    \"uid\": \"unique-address-identifier\"\n}))"
+                        },
+                        {
+                            "name": "Rust",
+                            "language": "rust",
+                            "code": "let address_out = xwallet.address().create(AddressIn {\n    accountId: \"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\".to_string(),\n    chain: \"ERC20\",\n    token: \"USDT\",\n    uid: Some(\"unique-address-identifier\".to_string()),\n}, None).await?;"
+                        },
+                        {
+                            "name": "C#",
+                            "language": "csharp",
+                            "code": "var addressOut = await xwallet.Address.CreateAsync(new AddressIn{\n    accountId: \"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n    chain: \"ERC20\",\n    token: \"USDT\",\n    uid: \"unique-address-identifier\"\n})"
+                        },
+                        {
+                            "name": "CLI",
+                            "language": "shell",
+                            "code": "xwallet address create '{\n    \"account_id\": \"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n    \"chain\": \"ERC20\",\n    \"token\": \"USDT\",\n    \"uid\": \"unique-address-identifier\"\n}'"
+                        },
+                        {
+                            "name": "cURL",
+                            "language": "shell",
+                            "code": "curl -X 'POST' \\\n  'https://api.xwallet.io/api/v1/addresses' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n        \"account_id\": \"account_2srOrx2ZWZBpBUvZwXKQmoEYga2\",\n        \"chain\": \"ERC20\",\n        \"token\": \"USDT\",\n        \"uid\": \"unique-address-identifier\"\n    }'"
+                        }
+                    ]
+                }
+            }
         }
     },
     "components": {
@@ -934,7 +1306,6 @@
                         "example": "wallet_1srOrx2ZWZBpBUvZwXKQmoEYga2",
                         "maxLength": 256,
                         "minLength": 1,
-                        "nullable": true,
                         "pattern": "^[a-zA-Z0-9\\-_.]+$",
                         "type": "string"
                     },
@@ -952,7 +1323,6 @@
                         "example": "USDT",
                         "maxLength": 256,
                         "minLength": 1,
-                        "nullable": true,
                         "type": "string"
                     }
                 },
@@ -983,7 +1353,6 @@
                         "example": "wallet_1srOrx2ZWZBpBUvZwXKQmoEYga2",
                         "maxLength": 256,
                         "minLength": 1,
-                        "nullable": true,
                         "pattern": "^[a-zA-Z0-9\\-_.]+$",
                         "type": "string"
                     },
@@ -1001,7 +1370,6 @@
                         "example": "USDT",
                         "maxLength": 256,
                         "minLength": 1,
-                        "nullable": true,
                         "type": "string"
                     },
                     "updatedAt": {
@@ -1013,6 +1381,121 @@
                     "id",
                     "wallet_id",
                     "currency",
+                    "metadata",
+                    "createdAt",
+                    "updatedAt"
+                ],
+                "type": "object"
+            },
+            "AddressIn": {
+                "properties": {
+                    "metadata": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "default": {},
+                        "type": "object"
+                    },
+                    "account_id": {
+                        "example": "account_2srOrx2ZWZBpBUvZwXKQmoEYga2",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                        "type": "string"
+                    },
+                    "uid": {
+                        "description": "Optional unique identifier for the address",
+                        "example": "unique-address-identifier",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "nullable": true,
+                        "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                        "type": "string"
+                    },
+                    "chain": {
+                        "description": "blockchain identifier",
+                        "example": "ERC20",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "token": {
+                        "description": "token symbol",
+                        "example": "USDT",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "wallet_id",
+                    "currency"
+                ],
+                "type": "object"
+            },
+            "AddressOut": {
+                "properties": {
+                    "id": {
+                        "description": "The account's ID",
+                        "example": "account_2srOrx2ZWZBpBUvZwXKQmoEYga2",
+                        "type": "string"
+                    },
+                    "metadata": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object"
+                    },
+                    "account_id": {
+                        "example": "account_2srOrx2ZWZBpBUvZwXKQmoEYga2",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                        "type": "string"
+                    },
+                    "uid": {
+                        "description": "The account's UID",
+                        "example": "unique-account-identifier",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "nullable": true,
+                        "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                        "type": "string"
+                    },
+                    "chain": {
+                        "description": "Blockchain identifier",
+                        "example": "ERC20",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "token": {
+                        "description": "Token symbol",
+                        "example": "USDT",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "address",
+                        "example": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "account_id",
+                    "chain",
+                    "token",
+                    "address",
                     "metadata",
                     "createdAt",
                     "updatedAt"
