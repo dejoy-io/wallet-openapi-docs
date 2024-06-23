@@ -591,6 +591,192 @@
                 }      
             }
         },
+
+        "/api/v1/accounts/{account_id}/withdraw": {
+            "post": {
+                "description": "Withdraw from a account.",
+                "operationId": "v1.account.withdraw",
+                "parameters": [
+                    {
+                        "description": "The account's ID or UID",
+                        "in": "path",
+                        "name": "account_id",
+                        "required": true,
+                        "schema": {
+                            "description": "The account's ID or UID",
+                            "example": "unique-account-identifier",
+                            "maxLength": 256,
+                            "minLength": 1,
+                            "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                            "type": "string"
+                        },
+                        "style": "simple"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WithdrawIn"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WithdrawOut"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Not Found"
+                    },
+                    "409": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Conflict"
+                    },
+                    "422": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        },
+                        "description": "Validation Error"
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpErrorOut"
+                                }
+                            }
+                        },
+                        "description": "Too Many Requests"
+                    }
+                },
+                "summary": "Withdraw from Account",
+                "tags": [
+                    "Account"
+                ],
+                "x-readme": {
+                    "code-samples": [
+                        {
+                            "name": "JavaScript",
+                            "language": "node",
+                            "code": "const withdrawOut = await xwallet.account.withdraw({\n    amount: \"1\",\n    currency: \"USDT\",\n    network: \"tron\",\n    address: \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"\n});"
+                        },
+                        {
+                            "name": "TypeScript",
+                            "language": "node",
+                            "code": "const withdrawOut = await xwallet.account.withdraw({\n    amount: \"1\",\n    currency: \"USDT\",\n    network: \"tron\"\n    address: \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"});"
+                        },
+                        {
+                            "name": "Python",
+                            "language": "python",
+                            "code": "withdraw_out = xwallet.account.withdraw(WithdrawIn(\n    amount=\"1\",\n    currency=\"USDT\",\n    network=\"tron\",\n    address=\"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"), None)"
+                        },
+                        {
+                            "name": "Python (Async)",
+                            "language": "python",
+                            "code": "withdraw_out = await xwallet.account.withdraw(WithdrawIn(\n    amount=\"1\",\n    currency=\"USDT\",\n    network=\"tron\",\n    address=\"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"), None)"
+                        },
+                        {
+                            "name": "Go",
+                            "language": "go",
+                            "code": "withdrawOut, err := xwalletClient.Account.Withdraw(ctx, &WithdrawIn{\n    amount: \"1\",\n    Currency: \"USDT\",\n    Network: \"tron\",\n    Address: \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\",\n})"
+                        },
+                        {
+                            "name": "Kotlin",
+                            "language": "kotlin",
+                            "code": "val withdrawOut = xwallet.withdraw.withdraw(WithdrawIn()\n    .amount(\"1\")\n    .currency(\"USDT\")\n    .network(\"tron\")\n    .address(\"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\")\n)"
+                        },
+                        {
+                            "name": "Java",
+                            "language": "java",
+                            "code": "WithdrawOut withdrawOut = xwallet.getAccount().withdraw(new WithdrawIn()\n    .amount(\"1\")\n    .currency(\"USDT\")\n    .network(\"tron\")\n    .address(\"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\")\n)"
+                        },
+                        {
+                            "name": "Ruby",
+                            "language": "ruby",
+                            "code": "withdraw_out = xwallet.account.withdraw(XWallet::WithdrawIn.new({\n    \"amount\": \"1\",\n    \"currency\": \"USDT\",\n    \"network\": \"tron\"\n    \"address\": \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"\n}))"
+                        },
+                        {
+                            "name": "Rust",
+                            "language": "rust",
+                            "code": "let withdraw_out = xwallet.account().withdraw(WithdrawIn {\n    amount: \"1\",\n    currency: \"USDT\",\n    network: \"tron\",\n    address: \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"),\n}, None).await?;"
+                        },
+                        {
+                            "name": "C#",
+                            "language": "csharp",
+                            "code": "var withdrawOut = await xwallet.Account.WithdrawAsync(new WithdrawIn{\n    amount: \"1\",\n    currency: \"USDT\",\n    network: \"tron\",\n    address: \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"\n})"
+                        },
+                        {
+                            "name": "CLI",
+                            "language": "shell",
+                            "code": "xwallet account withdraw '{\n    \"amount\": \"1\",\n    \"currency\": \"USDT\",\n    \"network\": \"tron\",\n    \"address\": \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"\n}'"
+                        },
+                        {
+                            "name": "cURL",
+                            "language": "shell",
+                            "code": "curl -X 'POST' \\\n  'https://api.xwallet.io/api/v1/accounts/{account_id}/withdraw' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n        \"amount\": \"1\",\n        \"currency\": \"USDT\",\n        \"network\": \"tron\",\n        \"address\": \"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE\"\n    }'"
+                        }
+                    ]
+                }      
+            }
+        },
+
+
         "/api/v1/accounts": {
             "post": {
                 "description": "Create a new account.",
@@ -1497,6 +1683,98 @@
                     "token",
                     "address",
                     "metadata",
+                    "createdAt",
+                    "updatedAt"
+                ],
+                "type": "object"
+            },
+            "WithdrawIn": {
+                "properties": {
+                    "account_id": {
+                        "example": "account_2srOrx2ZWZBpBUvZwXKQmoEYga2",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                        "type": "string"
+                    },
+                    "amount": {
+                        "description": "Amount",
+                        "example": "1",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "pattern": "^[0-9]+$",
+                        "type": "string"
+                    },
+                    "network": {
+                        "description": "blockchain network",
+                        "example": "tron",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "Destination address",
+                        "example": "TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "wallet_id",
+                    "currency"
+                ],
+                "type": "object"
+            },
+            "WithdrawOut": {
+                "properties": {
+                    "id": {
+                        "description": "The withdraw's ID",
+                        "example": "67a1f25f-2c06-3ef2-962a-15475d9ddedb",
+                        "type": "string"
+                    },
+                    "account_id": {
+                        "example": "account_2srOrx2ZWZBpBUvZwXKQmoEYga2",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                        "type": "string"
+                    },
+                    "network": {
+                        "description": "Blockchain identifier",
+                        "example": "ERC20",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "amount": {
+                        "description": "Amount",
+                        "example": "1",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "pattern": "^[0-9]+$",
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "Destination address",
+                        "example": "TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "account_id",
+                    "network",
+                    "amount",
+                    "address",
                     "createdAt",
                     "updatedAt"
                 ],
