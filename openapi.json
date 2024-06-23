@@ -334,33 +334,33 @@
                     "code-samples": [
                         {
                             "label": "JavaScript",
-                            "lang": "JavaScript",
-                            "source": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
+                            "language": "javaScript",
+                            "code": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
                         },
                         {
                             "label": "TypeScript",
-                            "lang": "JavaScript",
-                            "source": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
+                            "language": "javaScript",
+                            "code": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
                         },
                         {
                             "label": "Python",
-                            "lang": "Python",
-                            "source": "wallet_out = xwallet.wallet.create(WalletIn(\n    name=\"My first wallet\",\n    uid=\"unique-wallet-identifier\"\n), None)"
+                            "language": "python",
+                            "code": "wallet_out = xwallet.wallet.create(WalletIn(\n    name=\"My first wallet\",\n    uid=\"unique-wallet-identifier\"\n), None)"
                         },
                         {
                             "label": "Python (Async)",
-                            "lang": "Python",
-                            "source": "wallet_out = await xwallet.wallet.create(WalletIn(\n    name=\"My first wallet\",\n    uid=\"unique-wallet-identifier\"\n), None)"
+                            "language": "python",
+                            "code": "wallet_out = await xwallet.wallet.create(WalletIn(\n    name=\"My first wallet\",\n    uid=\"unique-wallet-identifier\"\n), None)"
                         },
                         {
                             "label": "Go",
-                            "lang": "Go",
-                            "source": "walletOut, err := xwalletClient.Wallet.Create(ctx, &WalletIn{\n    Name: \"My first wallet\",\n    Uid: \"unique-wallet-identifier\",\n})"
+                            "language": "go",
+                            "code": "walletOut, err := xwalletClient.Wallet.Create(ctx, &WalletIn{\n    Name: \"My first wallet\",\n    Uid: \"unique-wallet-identifier\",\n})"
                         },
                         {
                             "label": "Kotlin",
-                            "lang": "Kotlin",
-                            "source": "val walletOut = xwallet.wallet.create(WalletIn()\n    .name(\"My first wallet\")\n    .uid(\"unique-wallet-identifier\")\n)"
+                            "language": "kotlin",
+                            "code": "val walletOut = xwallet.wallet.create(WalletIn()\n    .name(\"My first wallet\")\n    .uid(\"unique-wallet-identifier\")\n)"
                         },
                         {
                             "label": "Java",
