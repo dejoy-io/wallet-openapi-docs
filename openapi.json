@@ -116,7 +116,9 @@
                 },
                 "security": [
                     {
-                        "HTTPBearer": []
+                        "ApiKeyAuth": [],
+                        "SignatureAuth": [],
+                        "TimestampAuth": []
                     }
                 ],
                 "summary": "Get Wallet",
@@ -182,7 +184,7 @@
                     {
                         "label": "cURL",
                         "lang": "Shell",
-                        "source": "curl -X 'GET' \\\n  'https://api.xwallet.com/api/v1/wallets/{wallet_id}' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Request-time: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'"
+                        "source": "curl -X 'GET' \\\n  'https://api.xwallet.com/api/v1/wallets/{wallet_id}' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'"
                     }
                 ]      
             }
@@ -317,7 +319,9 @@
                 },
                 "security": [
                     {
-                        "HTTPBearer": []
+                        "ApiKeyAuth": [],
+                        "SignatureAuth": [],
+                        "TimestampAuth": []
                     }
                 ],
                 "summary": "Create Wallet",
@@ -383,7 +387,7 @@
                     {
                         "label": "cURL",
                         "lang": "Shell",
-                        "source": "curl -X 'POST' \\\n  'https://api.xwallet.io/api/v1/wallets' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Request-time: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n        \"name\": \"My first wallet\",\n        \"uid\": \"unique-wallet-identifier\"\n    }'"
+                        "source": "curl -X 'POST' \\\n  'https://api.xwallet.io/api/v1/wallets' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n        \"name\": \"My first wallet\",\n        \"uid\": \"unique-wallet-identifier\"\n    }'"
                     }
                 ]
             }
@@ -520,6 +524,23 @@
                 ],
                 "type": "object"
             }
-        }
+        },
+        "securitySchemes": {
+            "ApiKeyAuth": {
+              "type": "apiKey",
+              "in": "header",
+              "name": "x-api-key"
+            },
+            "SignatureAuth": {
+              "type": "apiKey",
+              "in": "header",
+              "name": "x-signature"
+            },
+            "TimestampAuth": {
+              "type": "apiKey",
+              "in": "header",
+              "name": "x-timestamp"
+            }
+          }
     }
 }
