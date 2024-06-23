@@ -125,68 +125,70 @@
                 "tags": [
                     "Wallet"
                 ],
-                "x-code-samples": [
-                    {
-                        "label": "JavaScript",
-                        "lang": "JavaScript",
-                        "source": "const walletOut = await xwallet.wallet.get(\"wallet_id\");"
-                    },
-                    {
-                        "label": "TypeScript",
-                        "lang": "JavaScript",
-                        "source": "const walletOut = await xwallet.wallet.get(\"wallet_id\");"
-                    },
-                    {
-                        "label": "Python",
-                        "lang": "Python",
-                        "source": "wallet_out = xwallet.wallet.get(\"wallet_id\")"
-                    },
-                    {
-                        "label": "Python (Async)",
-                        "lang": "Python",
-                        "source": "wallet_out = await xwallet.wallet.get(\"wallet_id\")"
-                    },
-                    {
-                        "label": "Go",
-                        "lang": "Go",
-                        "source": "walletOut, err := xwalletClient.Wallet.Get(ctx, \"wallet_id\")"
-                    },
-                    {
-                        "label": "Kotlin",
-                        "lang": "Kotlin",
-                        "source": "val walletOut = xwallet.wallet.get(\"wallet_id\")"
-                    },
-                    {
-                        "label": "Java",
-                        "lang": "Java",
-                        "source": "WalletOut walletOut = xwallet.getWallet().get(\"wallet_id\")"
-                    },
-                    {
-                        "label": "Ruby",
-                        "lang": "Ruby",
-                        "source": "wallet_out = xwallet.wallet.get(\"wallet_id\")"
-                    },
-                    {
-                        "label": "Rust",
-                        "lang": "Rust",
-                        "source": "let wallet_out = xwallet.wallet().get(\"wallet_id\").await?;"
-                    },
-                    {
-                        "label": "C#",
-                        "lang": "C#",
-                        "source": "var walletOut = await xwallet.Wallet.GetAsync(\"wallet_id\")"
-                    },
-                    {
-                        "label": "CLI",
-                        "lang": "Shell",
-                        "source": "xwallet wallet get \"wallet_id\""
-                    },
-                    {
-                        "label": "cURL",
-                        "lang": "Shell",
-                        "source": "curl -X 'GET' \\\n  'https://api.xwallet.com/api/v1/wallets/{wallet_id}' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'"
-                    }
-                ]      
+                "x-readme": {
+                    "code-samples": [
+                        {
+                            "label": "JavaScript",
+                            "lang": "JavaScript",
+                            "source": "const walletOut = await xwallet.wallet.get(\"wallet_id\");"
+                        },
+                        {
+                            "label": "TypeScript",
+                            "lang": "JavaScript",
+                            "source": "const walletOut = await xwallet.wallet.get(\"wallet_id\");"
+                        },
+                        {
+                            "label": "Python",
+                            "lang": "Python",
+                            "source": "wallet_out = xwallet.wallet.get(\"wallet_id\")"
+                        },
+                        {
+                            "label": "Python (Async)",
+                            "lang": "Python",
+                            "source": "wallet_out = await xwallet.wallet.get(\"wallet_id\")"
+                        },
+                        {
+                            "label": "Go",
+                            "lang": "Go",
+                            "source": "walletOut, err := xwalletClient.Wallet.Get(ctx, \"wallet_id\")"
+                        },
+                        {
+                            "label": "Kotlin",
+                            "lang": "Kotlin",
+                            "source": "val walletOut = xwallet.wallet.get(\"wallet_id\")"
+                        },
+                        {
+                            "label": "Java",
+                            "lang": "Java",
+                            "source": "WalletOut walletOut = xwallet.getWallet().get(\"wallet_id\")"
+                        },
+                        {
+                            "label": "Ruby",
+                            "lang": "Ruby",
+                            "source": "wallet_out = xwallet.wallet.get(\"wallet_id\")"
+                        },
+                        {
+                            "label": "Rust",
+                            "lang": "Rust",
+                            "source": "let wallet_out = xwallet.wallet().get(\"wallet_id\").await?;"
+                        },
+                        {
+                            "label": "C#",
+                            "lang": "C#",
+                            "source": "var walletOut = await xwallet.Wallet.GetAsync(\"wallet_id\")"
+                        },
+                        {
+                            "label": "CLI",
+                            "lang": "Shell",
+                            "source": "xwallet wallet get \"wallet_id\""
+                        },
+                        {
+                            "label": "cURL",
+                            "lang": "Shell",
+                            "source": "curl -X 'GET' \\\n  'https://api.xwallet.com/api/v1/wallets/{wallet_id}' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json'"
+                        }
+                    ]
+                }      
             }
         },
         "/api/v1/wallets": {
@@ -328,68 +330,70 @@
                 "tags": [
                     "Wallet"
                 ],
-                "x-code-samples": [
-                    {
-                        "label": "JavaScript",
-                        "lang": "JavaScript",
-                        "source": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
-                    },
-                    {
-                        "label": "TypeScript",
-                        "lang": "JavaScript",
-                        "source": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
-                    },
-                    {
-                        "label": "Python",
-                        "lang": "Python",
-                        "source": "wallet_out = xwallet.wallet.create(WalletIn(\n    name=\"My first wallet\",\n    uid=\"unique-wallet-identifier\"\n), None)"
-                    },
-                    {
-                        "label": "Python (Async)",
-                        "lang": "Python",
-                        "source": "wallet_out = await xwallet.wallet.create(WalletIn(\n    name=\"My first wallet\",\n    uid=\"unique-wallet-identifier\"\n), None)"
-                    },
-                    {
-                        "label": "Go",
-                        "lang": "Go",
-                        "source": "walletOut, err := xwalletClient.Wallet.Create(ctx, &WalletIn{\n    Name: \"My first wallet\",\n    Uid: \"unique-wallet-identifier\",\n})"
-                    },
-                    {
-                        "label": "Kotlin",
-                        "lang": "Kotlin",
-                        "source": "val walletOut = xwallet.wallet.create(WalletIn()\n    .name(\"My first wallet\")\n    .uid(\"unique-wallet-identifier\")\n)"
-                    },
-                    {
-                        "label": "Java",
-                        "lang": "Java",
-                        "source": "WalletOut walletOut = xwallet.getWallet().create(new WalletIn()\n    .name(\"My first wallet\")\n    .uid(\"unique-wallet-identifier\")\n)"
-                    },
-                    {
-                        "label": "Ruby",
-                        "lang": "Ruby",
-                        "source": "wallet_out = xwallet.wallet.create(XWallet::WalletIn.new({\n    \"name\": \"My first wallet\",\n    \"uid\": \"unique-wallet-identifier\"\n}))"
-                    },
-                    {
-                        "label": "Rust",
-                        "lang": "Rust",
-                        "source": "let wallet_out = xwallet.wallet().create(WalletIn {\n    name: \"My first wallet\".to_string(),\n    uid: Some(\"unique-wallet-identifier\".to_string()),\n}, None).await?;"
-                    },
-                    {
-                        "label": "C#",
-                        "lang": "C#",
-                        "source": "var walletOut = await xwallet.Wallet.CreateAsync(new WalletIn{\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n})"
-                    },
-                    {
-                        "label": "CLI",
-                        "lang": "Shell",
-                        "source": "xwallet wallet create '{\n    \"name\": \"My first wallet\",\n    \"uid\": \"unique-wallet-identifier\"\n}'"
-                    },
-                    {
-                        "label": "cURL",
-                        "lang": "Shell",
-                        "source": "curl -X 'POST' \\\n  'https://api.xwallet.io/api/v1/wallets' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n        \"name\": \"My first wallet\",\n        \"uid\": \"unique-wallet-identifier\"\n    }'"
-                    }
-                ]
+                "x-readme": {
+                    "code-samples": [
+                        {
+                            "label": "JavaScript",
+                            "lang": "JavaScript",
+                            "source": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
+                        },
+                        {
+                            "label": "TypeScript",
+                            "lang": "JavaScript",
+                            "source": "const walletOut = await xwallet.wallet.create({\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n});"
+                        },
+                        {
+                            "label": "Python",
+                            "lang": "Python",
+                            "source": "wallet_out = xwallet.wallet.create(WalletIn(\n    name=\"My first wallet\",\n    uid=\"unique-wallet-identifier\"\n), None)"
+                        },
+                        {
+                            "label": "Python (Async)",
+                            "lang": "Python",
+                            "source": "wallet_out = await xwallet.wallet.create(WalletIn(\n    name=\"My first wallet\",\n    uid=\"unique-wallet-identifier\"\n), None)"
+                        },
+                        {
+                            "label": "Go",
+                            "lang": "Go",
+                            "source": "walletOut, err := xwalletClient.Wallet.Create(ctx, &WalletIn{\n    Name: \"My first wallet\",\n    Uid: \"unique-wallet-identifier\",\n})"
+                        },
+                        {
+                            "label": "Kotlin",
+                            "lang": "Kotlin",
+                            "source": "val walletOut = xwallet.wallet.create(WalletIn()\n    .name(\"My first wallet\")\n    .uid(\"unique-wallet-identifier\")\n)"
+                        },
+                        {
+                            "label": "Java",
+                            "lang": "Java",
+                            "source": "WalletOut walletOut = xwallet.getWallet().create(new WalletIn()\n    .name(\"My first wallet\")\n    .uid(\"unique-wallet-identifier\")\n)"
+                        },
+                        {
+                            "label": "Ruby",
+                            "lang": "Ruby",
+                            "source": "wallet_out = xwallet.wallet.create(XWallet::WalletIn.new({\n    \"name\": \"My first wallet\",\n    \"uid\": \"unique-wallet-identifier\"\n}))"
+                        },
+                        {
+                            "label": "Rust",
+                            "lang": "Rust",
+                            "source": "let wallet_out = xwallet.wallet().create(WalletIn {\n    name: \"My first wallet\".to_string(),\n    uid: Some(\"unique-wallet-identifier\".to_string()),\n}, None).await?;"
+                        },
+                        {
+                            "label": "C#",
+                            "lang": "C#",
+                            "source": "var walletOut = await xwallet.Wallet.CreateAsync(new WalletIn{\n    name: \"My first wallet\",\n    uid: \"unique-wallet-identifier\"\n})"
+                        },
+                        {
+                            "label": "CLI",
+                            "lang": "Shell",
+                            "source": "xwallet wallet create '{\n    \"name\": \"My first wallet\",\n    \"uid\": \"unique-wallet-identifier\"\n}'"
+                        },
+                        {
+                            "label": "cURL",
+                            "lang": "Shell",
+                            "source": "curl -X 'POST' \\\n  'https://api.xwallet.io/api/v1/wallets' \\\n  -H 'X-API-KEY: AUTH_TOKEN' \\\n  -H 'X-Signature: SIGNATURE' \\\n  -H 'X-Timestamp: TIMESTAMP' \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n        \"name\": \"My first wallet\",\n        \"uid\": \"unique-wallet-identifier\"\n    }'"
+                        }
+                    ]
+                }
             }
         }
     },
