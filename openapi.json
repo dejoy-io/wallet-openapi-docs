@@ -19,7 +19,6 @@
     "x-readme": {
         "samples-languages": [
             "python",
-            "javascript",
             "node",
             "csharp",
             "java",
