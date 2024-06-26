@@ -6,7 +6,7 @@
     },
     "servers": [
         {
-            "url": "https://api.wallet-pay.openweb3.io"
+            "url": "https://api.wallet.openweb3.io"
         }
     ],
     "security": [
